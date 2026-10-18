@@ -17,6 +17,7 @@ import '../services/support/support_message.dart';
 import '../services/support/support_nav.dart';
 import '../services/version_info.dart';
 import 'about_screen.dart';
+import 'aggregator_screen.dart';
 import 'app_settings_screen.dart';
 import 'config_screen.dart';
 import 'debug_screen.dart';
@@ -830,6 +831,21 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver, Ti
               body: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+          Card(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: ListTile(
+              leading: const Icon(Icons.merge_type, color: Colors.blue),
+              title: const Text('Агрегатор VPN (Бета)'),
+              subtitle: const Text('Сбор серверов с GitHub'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AggregatorScreen()),
+                );
+              },
+            ),
+          ),
                   // Empty state (§328 — нет серверов, не «нет конфига») → guide +
                   // CTA берёт на себя весь экран; controls/header не рисуем,
                   // чтобы disabled-кнопка не путала первого пользователя.
